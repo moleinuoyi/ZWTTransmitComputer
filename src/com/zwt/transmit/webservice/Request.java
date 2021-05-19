@@ -1,4 +1,4 @@
-package com.zwt.transmit;
+package com.zwt.transmit.webservice;
 
 public class Request {
 

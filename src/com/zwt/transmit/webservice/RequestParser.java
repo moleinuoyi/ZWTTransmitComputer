@@ -1,4 +1,6 @@
-package com.zwt.transmit;
+package com.zwt.transmit.webservice;
+
+import com.zwt.transmit.webservice.Request;
 
 import java.io.IOException;
 import java.io.InputStream;

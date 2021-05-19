@@ -3,6 +3,8 @@ package com.zwt.transmit;
 import com.teamdev.jxbrowser.chromium.Browser;
 import com.teamdev.jxbrowser.chromium.ba;
 import com.teamdev.jxbrowser.chromium.swing.BrowserView;
+import com.zwt.transmit.webservice.WebService;
+
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +15,12 @@ import java.math.BigInteger;
 
 
 public class Test {
-
+    private static WebService.ConnectServiceCallback connectServiceCallback = new WebService.ConnectServiceCallback() {
+        @Override
+        public void connectSuccess() {
+            aaa();
+        }
+    };
 
     static {
 
@@ -47,12 +54,19 @@ public class Test {
 //        browser.loadHTML("<html><body><h1>Hello World!</h1></body></html>");
 
 //        final String url = "http://m.baidu.com/";
-        String aa = String.join("/",new String[]{"a", "b", "c"});
-        System.out.println(aa);
-        aaa();
+
+            WebService webService = new WebService(connectServiceCallback);
+            try {
+                webService.start();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+//        aaa();
     }
     public static void aaa(){
-        final String url = "file:///C:/Users/fang/Desktop/html/时钟/clock.html";
+        final String url = "http://127.0.0.1:8888/text";
+//        final String url = "https://www.baidu.com";
 
         final String title = "百度";
         Browser browser = new Browser();
